@@ -1,0 +1,33 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "WildGuard Incident",
+  "type": "object",
+  "required": [
+    "id",
+    "species",
+    "gps",
+    "observed_behavior",
+    "injury_severity",
+    "reporter_reliability",
+    "access_difficulty",
+    "priority"
+  ],
+  "properties": {
+    "id": { "type": "string" },
+    "species": { "type": "string" },
+    "gps": {
+      "type": "object",
+      "required": ["lat", "lon"],
+      "properties": {
+        "lat": { "type": "number", "minimum": -90, "maximum": 90 },
+        "lon": { "type": "number", "minimum": -180, "maximum": 180 }
+      }
+    },
+    "observed_behavior": { "type": "string" },
+    "injury_severity": { "type": "string", "enum": ["low", "medium", "high"] },
+    "reporter_reliability": { "type": "number", "minimum": 0, "maximum": 1 },
+    "access_difficulty": { "type": "string", "enum": ["open", "river", "forest", "cliff"] },
+    "priority": { "type": "integer", "minimum": 1, "maximum": 5 }
+  },
+  "additionalProperties": true
+}

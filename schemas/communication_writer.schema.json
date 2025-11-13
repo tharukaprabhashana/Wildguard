@@ -1,0 +1,10 @@
+{
+  "type":"object",
+  "properties":{
+    "message_text":{"type":"string"},
+    "channels":{"type":"array","items":{"type":"string"}},
+    "suggested_time_iso":{"type":"string"},
+    "explanation":{"type":"string"}
+  },
+  "required":["message_text","channels"]
+}

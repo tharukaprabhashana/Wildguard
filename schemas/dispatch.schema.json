@@ -1,0 +1,12 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "WildGuard Dispatch Decision",
+  "type": "object",
+  "required": ["awarded_unit_id", "reason", "expected_arrival_iso"],
+  "properties": {
+    "awarded_unit_id": { "type": "string" },
+    "reason": { "type": "string" },
+    "expected_arrival_iso": { "type": "string", "format": "date-time" }
+  },
+  "additionalProperties": true
+}
