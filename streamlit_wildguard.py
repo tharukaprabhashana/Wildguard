@@ -272,7 +272,7 @@ with st.sidebar:
     reporter_type = st.selectbox("Reporter", ["ranger", "citizen", "camera_trap", "drone"], index=0)
     
     # Submit incident button
-    if st.button("📤 Submit Incident Report", key="submit_incident", type="primary", width='stretch', help="Send this report to the system"):
+    if st.button("📤 Submit Incident Report", key="submit_incident", type="primary", use_container_width=True, help="Send this report to the system"):
         if st.session_state.system_running and st.session_state.broker:
             # Get coordinates from map selection
             incident_lat = st.session_state.incident_location["lat"]
@@ -473,18 +473,19 @@ with tab_overview:
                         
                         # Show all evaluated options for transparency
                         if 'all_options' in content and len(content['all_options']) > 1:
-                            with st.expander("📊 All Station Options Evaluated"):
-                                options_df = pd.DataFrame([
-                                    {
-                                        "Station": opt.get('station_name', 'N/A'),
-                                        "Distance (km)": opt.get('distance_km', 0),
-                                        "ETA (min)": opt.get('eta_minutes', 0),
-                                        "Available": "✅" if opt.get('available') else "❌",
-                                        "Capable": "✅" if opt.get('capable') else "❌"
-                                    }
-                                    for opt in content['all_options']
-                                ])
-                                st.dataframe(options_df, width='stretch')
+                            st.markdown("---")
+                            st.markdown("**📊 All Station Options Evaluated**")
+                            options_df = pd.DataFrame([
+                                {
+                                    "Station": opt.get('station_name', 'N/A'),
+                                    "Distance (km)": opt.get('distance_km', 0),
+                                    "ETA (min)": opt.get('eta_minutes', 0),
+                                    "Available": "✅" if opt.get('available') else "❌",
+                                    "Capable": "✅" if opt.get('capable') else "❌"
+                                }
+                                for opt in content['all_options']
+                            ])
+                            st.dataframe(options_df, use_container_width=True)
                         st.caption(f"🕐 {timestamp[:19] if len(timestamp) > 19 else timestamp}")
                 
                 elif perf == 'dispatch_acknowledged':
@@ -564,7 +565,7 @@ with tab_overview:
                         })
             
             if coords:
-                st.dataframe(pd.DataFrame(coords[-10:][::-1]), width='stretch', height=400)
+                st.dataframe(pd.DataFrame(coords[-10:][::-1]), use_container_width=True, height=400)
                 
                 # Show live Yala map with incident and dispatch routes
                 st.markdown("---")
@@ -991,8 +992,9 @@ with tab_timeline:
                             st.markdown(f"**Follow-up:** {treatment.get('follow_up_care', 'N/A')}")
                         
                         # Always show raw content in collapsed section
-                        with st.expander("📋 Raw Message Data"):
-                            st.json(content)
+                        st.markdown("---")
+                        st.markdown("**📋 Raw Message Data**")
+                        st.json(content)
                 
                 # Add connecting line between messages
                 if idx < len(msgs) - 1:
@@ -1104,7 +1106,7 @@ with tab_negotiation:
                     return [''] * len(row)
             
             styled_df = df.style.apply(highlight_winner, axis=1)
-            st.dataframe(styled_df, width='stretch', height=250)
+            st.dataframe(styled_df, use_container_width=True, height=250)
             
             # Visual comparison charts
             st.markdown("---")
