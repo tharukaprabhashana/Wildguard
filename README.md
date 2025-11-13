@@ -416,9 +416,9 @@ Contributions are welcome! Please:
 ## 📧 Contact
 
 **Project Maintainer**: Tharuka Prabhashana  
-**Repository**: [github.com/tharukaprabhashana/smart-disaster-mas](https://github.com/tharukaprabhashana/smart-disaster-mas)  
-**Issues**: [Submit an issue](https://github.com/tharukaprabhashana/smart-disaster-mas/issues)
-
+**Repository**: [github.com/tharukaprabhashana/Wildguard](https://github.com/tharukaprabhashana/Wildguard)  
+**Issues**: [Submit an issue](https://github.com/tharukaprabhashana/Wildguard/issues)
+   
 ---
 
 ## 🙏 Acknowledgments
