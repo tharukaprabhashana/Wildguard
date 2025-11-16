@@ -1036,7 +1036,7 @@ with tab_timeline:
 # Negotiation Analysis Tab
 # -------------------------
 with tab_negotiation:
-    st.subheader("⚖️ Negotiation & Bid Analysis")
+    st.subheader("⚖️ Negotiation")
     st.caption("Compare all ranger station proposals and understand dispatch decisions")
     
     if st.session_state.message_queue:
